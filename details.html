@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport">
+    <link rel="stylesheet" href="style.css">
+    <title>Cars Details</title>
+  </head>
+  <body onload="showdetails();">
+    <!-- start show details from cars page -->
+    <div id="carDetails">
+      <div id="carName">Car Name: </div>
+      <div id="carPrice">Car Price: </div>
+      <div id="carDate">Car Date: </div>
+      <div id="carRent">Car Rent: </div>
+      <img id="carPhoto" alt="car_photo"></img>
+    </div>
+    <!-- end show details from cars page -->
+    <!-- start show more details -->
+    <div class="carmoredetails">
+      <div id="BMW" style="display: none;">
+        <img src="images/BMW.jfif" alt="BMW">
+        <div>Car colors: there are white and blue</div>
+        <div>Car chairs: 4</div>
+      </div>
+      <div id="ferrari" style="display: none;">
+        <img src="images/ferrari.jfif" alt="ferrari">
+        <div>Car colors: there are white and yellow</div>
+        <div>Car chairs: 2</div>
+      </div>
+      <div id="Cadillac" style="display: none;">
+        <img src="images/Cadillac.jfif" alt="Cadillac">
+        <div>Car colors: there are white and red</div>
+        <div>Car chairs: 4</div>
+      </div>
+      <div id="KIA" style="display: none;">
+        <img src="images/KIA.jfif" alt="KIA">
+        <div>Car colors: there are grey and black</div>
+        <div>Car chairs: 4</div>
+      </div>
+      <div id="lexes" style="display: none;">
+        <img src="images/Lexes.jfif" alt="lexes">
+        <div>Car colors: there are black and red</div>
+        <div>Car chairs: 2 or 4</div>
+      </div>
+      <div id="Mercedes" style="display: none;">
+        <img src="images/Mercedes2.jpg" alt="Mercedes">
+        <div>Car colors: there are white and grey</div>
+        <div>Car chairs: 4</div>
+      </div>
+      <div id="Nissan" style="display: none;">
+        <img src="images/Nissan.jfif" alt="Nissan">
+        <div>Car colors: there are white and blue</div>
+        <div>Car chairs: 4</div>
+      </div>
+      <div id="range rover" style="display: none;">
+        <img src="images/range rover.png" alt="range rover">
+        <div>Car colors: there are white and red</div>
+        <div>Car chairs: 4</div>
+      </div>
+      <div id="Rolls-Royce" style="display: none;">
+        <img src="images/Rolls-Royce.jfif" alt="Rolls-Royce">
+        <div>Car colors: there are black and grey</div>
+        <div>Car chairs: 2 or 4</div>
+      </div>
+      <div id="Toyota" style="display: none;">
+        <img src="images/Toyota.jfif" alt="Toyota">
+        <div>Car colors: there are white and blue</div>
+        <div>Car chairs: 4</div>
+      </div>
+      <table id="calc">
+        <tr>
+          <th>Description</th>
+          <th>Calculation</th>
+        </tr>
+        <tr>
+          <td>The rent</td>
+          <td id="carrent"></td>
+        </tr>
+        <tr>
+          <td>Reconstruction fees (1%)</td>
+          <td id="fees"></td>
+        </tr>
+        <tr>
+          <td>Taxes (5%)</td>
+          <td id="tax"></td>
+        </tr>
+      </table>
+    </div>
+    <!-- end show more details -->
+    <!-- start buttons -->
+    <div class="buttons">
+      <div id="validbutton">
+        <input id="check" type="checkbox" onchange="check();addcap();" ></input>
+        <label>continue</label>
+      </div>
+      <a href="Cars.html"><input type="button" value="Cancel" id="button"></input></a>
+    </div>
+    <!-- end buttons -->
+    <!-- start form -->
+    <form id="buyform" action=" " style="display: none;">
+      <table id="buytable">
+        <tr>
+          <td>Name:</td>
+          <td><input type="text" id="costmer_name" required placeholder="Enter your name in arabic" onKeyup="CheckName();" onblur="CheckName(); ">
+            <div>
+              <small class="error" id="errName"></small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>National Number:</td>
+          <td><input type="text" id="costmer_nationalnumb" maxlength="11" required placeholder="Enter your national Id" onKeyup="CheckId();" onblur="CheckId();";>
+            <div>
+              <small class="error" id="errId"></small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Birthday:</td>
+          <td><input type="date" id="birthdate" id="birthdate" required min="10-7-2201" onKeyup="CheckDate();" onblur="CheckDate();" >
+            <div>
+              <small class="error" id="errDate"></small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Phone Number:</td>
+          <td><input type="tel" id="costmer_phone" name="phone" required placeholder="Enter your phone number" onKeyup="CheckPhone();" onblur="CheckPhone();">
+            <div>
+              <small class="error" id="errNumber"></small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td><input type="email" id="costmer_email" required placeholder="Enter your Email" onkeyup="CheckEmail();" onblur="CheckEmail();">
+            <div>
+              <small class="error" id="errEmail"></small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Rent Time:
+            <div id="note"></div>
+          </td>
+          <td><input type="number" size="5" min="1" id="costmer_rent" required placeholder="Enter how much you need the car" onKeyup="CheckRent();" onblur="CheckRent();">
+            <div>
+              <small class="error" id="errRent"></small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Captcha:<img id="refresh" src="images/R.png" alt="cap" onclick="addcap();"></td>
+          <td><div type="text" id="capt"></div></td>
+        </tr>
+        <td>Enter captcha:</td>
+        <td><input type="text" id="validate_capt" required placeholder="Enter the captcha" onkeyup="ValidCaptcha();" onblur="ValidCaptcha();" >
+          <div>
+            <small class="succ" id="SuccCaptcha"></small>
+            <small class="error" id="errCaptcha"></small>
+        </div>
+        </td>
+      </tr>
+        <tr>
+          <td><input type="submit" value="Submit" id="button" onclick="ValidationForm();"></td>
+          <td><input type="reset" value="reset" id="button"></td>
+        </tr>
+      </table>
+    </form>
+    <!-- end form -->
+    <script  type="text/javaScript" src="myFunction.js"></script>
+  </body>
+</html>
+
